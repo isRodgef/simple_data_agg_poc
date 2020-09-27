@@ -1,0 +1,14 @@
+version: '3'
+services:
+  database:
+    image: 'mongo'
+    container_name: 'mongo-agg-store'
+    environment:
+      - MONGO_INITDB_DATABSE=patient_db
+      - MONGO_INITDN_ROOT_USERNAME=uroot
+      - MONGO_INITDB_ROOT_PASSWORD=pword
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
+      - ./mongo-volume:/data/db
+    ports:
+      - '27017-27019:27017-27019'
