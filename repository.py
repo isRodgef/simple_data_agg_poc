@@ -1,6 +1,5 @@
 import abc
 
-
 class Repository:
     @abc.abstractmethod
     def insert(self, data):

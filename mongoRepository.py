@@ -11,20 +11,17 @@ class MongoRepository(Repository):
             self.db = self.connect.demoDB
             self.collection = self.db.demoCollection
         except:
-            client = None
+            self.connect = None
             pass
 
     def insert(self, data):
-        document1 = {
-            "name": "John",
-            "age": 24,
-            "location": "New York"
-        }
-        self.collection.insert_one(document1)
+        if self.connect != None:
+            self.collection.insert_one(data)
+            #return True
+        #return False
         cursor = self.collection.find()
         for record in cursor:
             print(record)
-        pass
 
     def delete(self, condition):
         pass
