@@ -1,10 +1,15 @@
-from flask import   Flask
+from flask import Flask, request
+from mongoRepository import MongoRepository
 
 app = Flask(__name__)
 
-@app.route("/getPatientData", methods = ['POST'])
+@app.route("/sendPatientData", methods = ['POST'])
 def loadData():
-    return 200, ""
+    print (request.get_json())
+    return "",404
+    mongo_connector = MongoRepository()
+    mongo_connector.insert({})
+    return  "",200
 
 if __name__ == '__main__':
     app.run()
