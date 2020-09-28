@@ -1,7 +1,17 @@
-db:
-  image: mongo:3.0.2
-  ports:
-      - '27017-27019:27017-27019'
+version: '3'
+services:
+  db:
+    image: mongo:3.0.2
+    ports:
+        - '27017-27019:27017-27019'
+  backend:
+    container_name: server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - 8000:8000
+    restart: always
 #version: '3'
 #services:
 #  database:
